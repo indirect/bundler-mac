@@ -10,7 +10,7 @@ module Bundler
       path = Bundler.bundle_path.to_s
 
       # Don't exclude "system" gems
-      return if Gem.path.include?(path)
+      return unless Bundler.settings[:path]
 
       # Skip Spotlight indexing inside the bundle
       Bundler.root.join(".metadata_never_index").write("")
