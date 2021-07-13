@@ -7,8 +7,6 @@ module Bundler
   module Mac
 
     def self.after_install_all(_)
-      path = Bundler.bundle_path.to_s
-
       # Don't exclude "system" gems
       return unless Bundler.settings[:path]
 
@@ -16,6 +14,7 @@ module Bundler
       Bundler.bundle_path.join(".metadata_never_index").write("")
 
       # Tell Time Machine to skip backing up the bundle
+      path = Bundler.bundle_path.to_s
       exclude_key = "com.apple.metadata:com_apple_backup_excludeItem"
       exclude_value = "bplist00_\x10\x11com.apple.backupd\b"
       Bundler.ui.debug "[time machine excluded] #{path}"
