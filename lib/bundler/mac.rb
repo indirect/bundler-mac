@@ -13,7 +13,7 @@ module Bundler
       return unless Bundler.settings[:path]
 
       # Skip Spotlight indexing inside the bundle
-      Bundler.root.join(".metadata_never_index").write("")
+      Bundler.bundle_path.join(".metadata_never_index").write("")
 
       # Tell Time Machine to skip backing up the bundle
       exclude_key = "com.apple.metadata:com_apple_backup_excludeItem"
