@@ -5,7 +5,6 @@ require_relative "mac/xattr"
 
 module Bundler
   module Mac
-
     def self.after_install_all(_)
       # Don't exclude "system" gems
       return unless Bundler.settings[:path]
@@ -20,6 +19,5 @@ module Bundler
       Bundler.ui.debug "[time machine excluded] #{path}"
       Xattr.setxattr(path, exclude_key, exclude_value, exclude_value.size, 0, 0)
     end
-
   end
 end
