@@ -17,12 +17,16 @@ RSpec.describe Bundler::Mac do
   end
 
   it "sets the Time Machine xattr and spotlight file" do
+    spec_dir = Dir.pwd
+
     Dir.mktmpdir("spec/tmp") do |dir|
       Dir.chdir(dir) do
         File.write "Gemfile", ""
         Bundler.with_unbundled_env do
           expect(bundle_path).to eq(nil)
-          `bundle config path .bundle && bundle install`
+          system "bundle config path .bundle"
+          system "bundle plugin install --local-git=#{Shellwords.escape(spec_dir)} bundler-mac"
+          system "bundle install"
           expect(xattrs(bundle_path)).to eq("com.apple.metadata:com_apple_backup_excludeItem\n")
           expect(Dir.glob("#{bundle_path}/.m*").first).to end_with(".metadata_never_index")
         end
