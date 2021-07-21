@@ -1,28 +1,16 @@
-# Bundler::Mac
+# bundler-mac
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bundler/mac`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The `bundler-mac` gem is a plugin for Bundler that automatically excludes bundled gems from Time Machine backups and Spotlight indexing. This can save a lot of time and effort on your computer's part, as well as potentially saving you money on backup disks.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'bundler-mac'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install bundler-mac
+1. Make sure you're in your home directory by running `cd` (with no arguments).
+1. Then, run `bundle plugin install bundler-mac`.
+1. There is no step three.
 
 ## Usage
 
-TODO: Write usage instructions here
+Everything is automatic whenever you run `bundle install` as usual.
 
 ## Development
 
